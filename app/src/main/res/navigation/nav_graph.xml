@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host"
+    app:startDestination="@id/notesFragment">
+
+    <fragment
+        android:id="@+id/notesFragment"
+        android:name="com.example.eidnotes.NotesFragment"
+        android:label="fragment_notes"
+        tools:layout="@layout/fragment_notes" >
+        <action
+            android:id="@+id/action_notesFragment_to_addFragment"
+            app:destination="@id/addFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <argument
+            android:name="returnedNote"
+            app:argType="com.example.eidnotes.models.Note"
+            app:nullable="true"
+            android:defaultValue="@null" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.eidnotes.AddFragment"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_notesFragment"
+            app:destination="@id/notesFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/notesFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="oldNote"
+            app:argType="com.example.eidnotes.models.Note"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+</navigation>
